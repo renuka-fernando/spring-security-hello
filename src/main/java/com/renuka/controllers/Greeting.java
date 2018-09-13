@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/greeting")
 public class Greeting {
-    @GetMapping("/{name}")
+    @GetMapping("/open/{name}")
     public String greet(@PathVariable("name") String name) {
         return "Hello " + name;
     }
 
-    @GetMapping("/{name}/protected")
+    @GetMapping("/protected/{name}")
     public String greetProtected(@PathVariable("name") String name) {
         return "Hello " + name + ", we have a secret for you. That is 4445-998 රේණුක!";
     }
