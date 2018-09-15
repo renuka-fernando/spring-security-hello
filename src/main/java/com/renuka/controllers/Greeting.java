@@ -1,5 +1,6 @@
 package com.renuka.controllers;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,5 +17,11 @@ public class Greeting {
     @GetMapping("/protected/{name}")
     public String greetProtected(@PathVariable("name") String name) {
         return "Hello " + name + ", we have a secret for you. That is 4445-998 රේණුක!";
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/admin/{name}")
+    public String greetAdmin(@PathVariable("name") String name) {
+        return "Hello " + name + ", FROM ADMIN";
     }
 }
